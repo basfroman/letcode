@@ -33,9 +33,8 @@ class Solution:
 
             p, q = l1.val if l1 else 0, l2.val if l2 else 0
 
-            mod, num = divmod(p + q + mod, 10)
+            mod, head.val = divmod(p + q + mod, 10)
 
-            head.val = num
             l1, l2 = l1.next if l1 else None, l2.next if l2 else None
             head.next = ListNode() if l1 or l2 or mod else None
             head = head.next
