@@ -8,27 +8,19 @@ class ListNode:
 class Solution:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
 
-        runner = result = ListNode()
+        head = result = ListNode()
         mod = 0
+        while l1 or l2 or mod:
 
-        while l1 or l2:
+            p, q = l1.val if l1 else 0, l2.val if l2 else 0
 
-            l1_v = l2_v = 0
+            mod, num = divmod(p + q + mod, 10)
 
-            if l1:
-                l1_v = l1.val
-                l1 = l1.next
-            if l2:
-                l2_v = l2.val
-                l2 = l2.next
+            head.val = num
+            l1, l2 = l1.next if l1 else None, l2.next if l2 else None
+            head.next = ListNode() if l1 or l2 or mod else None
+            head = head.next
 
-            mod, num = divmod(l1_v + l2_v + mod, 10)
-
-            runner.val += num
-            if l1 or l2:
-                runner.next = ListNode(mod)
-            runner = runner.next
-            mod = 0
         return result
 
 
@@ -40,9 +32,26 @@ def sll_to_lst(obj: ListNode):
     return result
 
 
+def list_to_sll(lst: list):
+    runner = result = ListNode()
+    for i in lst:
+        runner.next = ListNode()
+        runner.next.val = i
+        runner = runner.next
+    return result.next
+
+
 if __name__ == '__main__':
     sol = Solution().addTwoNumbers(
-        ListNode(2, ListNode(4)),
-        ListNode(5, ListNode(6, ListNode(4)))
+        list_to_sll([2, 4, 3]),
+        list_to_sll([5, 6, 4])
     )
-    print(sll_to_lst(sol))
+    print('#:', sll_to_lst(sol))
+    print('->', [7, 0, 8])
+
+    sol = Solution().addTwoNumbers(
+        list_to_sll([9, 9, 9, 9, 9, 9, 9]),
+        list_to_sll([9, 9, 9, 9])
+    )
+    print('#:', sll_to_lst(sol))
+    print('->', [8, 9, 9, 9, 0, 0, 0, 1])
