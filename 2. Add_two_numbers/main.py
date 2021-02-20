@@ -43,16 +43,12 @@ class Solution:
 
 
 if __name__ == '__main__':
-    sol = Solution().addTwoNumbers(
+    assert Solution().addTwoNumbers(
         list_to_sll([2, 4, 3]),
         list_to_sll([5, 6, 4])
-    )
-    print('#:', sll_to_lst(sol))
-    print('->', [7, 0, 8])
+    ) == [7, 0, 8]
 
-    sol = Solution().addTwoNumbers(
+    assert Solution().addTwoNumbers(
         list_to_sll([9, 9, 9, 9, 9, 9, 9]),
         list_to_sll([9, 9, 9, 9])
-    )
-    print('#:', sll_to_lst(sol))
-    print('->', [8, 9, 9, 9, 0, 0, 0, 1])
+    ) == [8, 9, 9, 9, 0, 0, 0, 1]
