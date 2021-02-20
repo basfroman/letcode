@@ -5,6 +5,25 @@ class ListNode:
         self.next = next
 
 
+def sll_to_lst(obj: ListNode):
+    result = []
+    while obj:
+        result.append(obj.val)
+        obj = obj.next
+    return result
+
+
+def list_to_sll(lst: list):
+    runner = result = ListNode()
+    for i in lst:
+        runner.next = ListNode()
+        runner.next.val = i
+        runner = runner.next
+    return result.next
+
+###############################################
+
+
 class Solution:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
 
@@ -22,23 +41,6 @@ class Solution:
             head = head.next
 
         return result
-
-
-def sll_to_lst(obj: ListNode):
-    result = []
-    while obj:
-        result.append(obj.val)
-        obj = obj.next
-    return result
-
-
-def list_to_sll(lst: list):
-    runner = result = ListNode()
-    for i in lst:
-        runner.next = ListNode()
-        runner.next.val = i
-        runner = runner.next
-    return result.next
 
 
 if __name__ == '__main__':
