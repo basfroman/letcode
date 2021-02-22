@@ -4,12 +4,10 @@ from typing import List
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
         merged = sorted(nums1 + nums2)
-        if len(merged) > 0 and merged[0] < 0:
-            merged.append(0)
-            merged.sort()
 
         if len(merged) % 2:
-            median = sum(merged)/len(merged)
+            # median = sum(merged)/len(merged)
+            median = float(merged[int(len(merged) / 2)])
             return median
         else:
             lst = sorted(merged)
