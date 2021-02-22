@@ -4,20 +4,28 @@ from typing import List
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
         merged = sorted(nums1 + nums2)
+        median = len(merged) // 2
+        return (merged[median] + merged[~median]) / 2
 
-        if len(merged) % 2:
-            # median = sum(merged)/len(merged)
-            median = float(merged[int(len(merged) / 2)])
-            return median
-        else:
-            lst = sorted(merged)
-            half = int(len(lst)/2)
+# Second Solution
 
-            l_lst = lst[:half][-1] if len(lst[:half]) > 0 else 0
-            r_lst = lst[half:][0] if len(lst[half:]) > 0 else 0
-
-            median = (l_lst + r_lst) / 2
-            return median
+# class Solution:
+#     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+#         merged = sorted(nums1 + nums2)
+#
+#         if len(merged) % 2:
+#             # median = sum(merged)/len(merged)
+#             median = float(merged[int(len(merged) / 2)])
+#             return median
+#         else:
+#             lst = sorted(merged)
+#             half = int(len(lst)/2)
+#
+#             l_lst = lst[:half][-1] if len(lst[:half]) > 0 else 0
+#             r_lst = lst[half:][0] if len(lst[half:]) > 0 else 0
+#
+#             median = (l_lst + r_lst) / 2
+#             return median
 
 
 if __name__ == '__main__':
