@@ -9,7 +9,6 @@ class Solution:
             return ''
 
         for i in range(len(s)):
-
             temp += s[i]
             print(temp)
 
@@ -20,3 +19,4 @@ if __name__ == '__main__':
     assert sol.longestPalindrome('cbbd') == 'bb'
     assert sol.longestPalindrome('a') == 'a'
     assert sol.longestPalindrome('ac') == 'a'
+ 
