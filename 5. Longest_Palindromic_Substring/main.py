@@ -2,7 +2,6 @@
 
 class Solution:
     def longestPalindrome(self, s: str) -> str:
-        result = ''
         temp = ''
 
         if not s:
