@@ -18,4 +18,3 @@ if __name__ == '__main__':
     assert sol.longestPalindrome('cbbd') == 'bb'
     assert sol.longestPalindrome('a') == 'a'
     assert sol.longestPalindrome('ac') == 'a'
- 
