@@ -5,11 +5,12 @@ class Solution:
         temp = ''
 
         if not s:
-            return ''
+            return temp
 
         for i in range(len(s)):
             temp += s[i]
             print(temp)
+        return temp
 
 
 if __name__ == '__main__':
