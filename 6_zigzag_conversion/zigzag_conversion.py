@@ -27,8 +27,8 @@ class Solution:
 
 if __name__ == '__main__':
     sol = Solution()
-    # assert sol.convert('PAYPALISHIRING', numRows=4) == 'PINALSIGYAHRPI'
-    # assert sol.convert('PAYPALISHIRING', numRows=3) == 'PAHNAPLSIIGYIR'
-    # assert sol.convert('A', numRows=1) == 'A'
-    # assert sol.convert('AB', numRows=1) == 'AB'
+    assert sol.convert('PAYPALISHIRING', numRows=4) == 'PINALSIGYAHRPI'
+    assert sol.convert('PAYPALISHIRING', numRows=3) == 'PAHNAPLSIIGYIR'
+    assert sol.convert('A', numRows=1) == 'A'
+    assert sol.convert('AB', numRows=1) == 'AB'
     assert sol.convert('ABCDE', numRows=4) == 'ABCED'
