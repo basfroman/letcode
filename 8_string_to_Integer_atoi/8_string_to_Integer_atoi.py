@@ -1,5 +1,5 @@
+# Medium
 # Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer (similar to C/C++'s atoi
-# function).
 #
 # The algorithm for myAtoi(string s) is as follows:
 #
@@ -22,35 +22,36 @@
 
 class Solution:
     def myAtoi(self, s: str) -> int:
-        s = s.replace(' ', '')
 
-        if s[0].isalpha():
+        s = s.strip(' ')
+        if not len(s):
             return 0
-
-        pol = 1
 
         tmp = ''
-        for i in s:
-            if i.isdigit() or i in ['-', '+', '.']:
-                tmp += i
-            else:
-                break
-        if len(tmp):
-            num = float(tmp) if '.' in tmp else int(tmp)
-        else:
-            return 0
+        start = ''
+        if s[0] in '-+' and len(s) > 1 and s[1].isdigit():
+            start = s[0]
+            s = s[1:]
 
-        if not (-2 ** 31 < num < (2 ** 31) - 1):
-            return (2 ** 31) - (0 if pol < 0 else 1)
+        for i in s:
+            if not i.isdigit():
+                break
+            else:
+                tmp += i
+
+        num = int(start + tmp if len(start + tmp) else '0')
+
+        if not (-2 ** 31 < num < (2 ** 31)):
+            return -2 ** 31 if num < 0 else (2 ** 31) - 1
         else:
             return num
 
 
 if __name__ == '__main__':
     sol = Solution()
-    assert sol.myAtoi('42') == 42
-    assert sol.myAtoi(' - 31') == -31
+    assert sol.myAtoi('  -42') == -42
+    assert sol.myAtoi(' - 31') == 0
     assert sol.myAtoi('qwe 12') == 0
+    assert sol.myAtoi("-91283472332") == -2147483648
     assert sol.myAtoi('1w2') == 1
-    assert sol.myAtoi('-91283472332') == -2147483648
     assert sol.myAtoi('+-12') == 0
