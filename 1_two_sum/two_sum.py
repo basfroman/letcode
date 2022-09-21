@@ -8,16 +8,15 @@ from typing import List
 
 
 class Solution:
+
+    # solution 1
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        i = 0
-        while True:
-            num = nums[i]
-            sec = target - num
-            if nums.count(sec) and nums.index(sec) != i:
-                return [i, nums.index(sec)]
-            if nums.count(num) > 1:
-                return [i, nums.index(num, i + 1)]
-            i += 1
+        for i, v in enumerate(nums):
+            if target == v * 2 and nums.count(v) > 1:
+                return [i, nums.index(v, i + 1)]
+            else:
+                if nums.count(target - v) and i != nums.index(target - v):
+                    return [i, nums.index(target - v)]
 
 
 if __name__ == '__main__':
@@ -25,4 +24,5 @@ if __name__ == '__main__':
     assert Solution().twoSum([3, 2, 4], 6) == [1, 2]
     assert Solution().twoSum([3, 3], 6) == [0, 1]
     assert Solution().twoSum([1, 2, 3, 4, 5], 8) == [2, 4]
-
+    assert Solution().twoSum([2, 5, 5, 11], 10) == [1, 2]
+    assert Solution().twoSum([1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 7, 1, 1, 1, 1, 1], 11) == [5, 11]
