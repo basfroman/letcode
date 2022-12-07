@@ -6,30 +6,19 @@ Array ('99', '100', 'A1', 'A1bb99x', 'A1bb100' , 'A2', 'C99' и т.п)
 """
 
 import re
-from functools import cmp_to_key
 
 
 def sort_key(key):
-    # долго не мог понять почему не работает findall, потом почитал как работает использование своей функции к ключу
-    # реально так и не понял до конца, но когда использовал сплит заработало)))
-    # arr = re.findall(r"(['a-z]+|[0-9]+)", key, flags=re.I)
+    if key.isdigit():
+        return ['', int(key), '']
+
     arr = re.split(r'([0-9]+)', key)
-    # print(arr)
-    return [int(string) if string.isdigit() else string for string in arr]
+    return ['_'] + [int(string) if string.isdigit() else string for string in arr]
 
 
 def sort_array(arr: list):
-    arr_nums = []
-    arr_strs = []
-
-    for item in arr:
-        if item.isdigit():
-            arr_nums.append(item)
-        else:
-            arr_strs.append(item)
-    arr_nums.sort(key=int)
-    arr_strs.sort(key=sort_key)
-    return arr_nums + arr_strs
+    arr.sort(key=sort_key)
+    return arr
 
 
 if __name__ == "__main__":
