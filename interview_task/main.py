@@ -13,7 +13,10 @@ def sort_key(key):
         return ['', int(key), '']
 
     arr = re.split(r'([0-9]+)', key)
-    return ['_'] + [int(string) if string.isdigit() else string for string in arr]
+
+    result = ['_'] + [int(string) if string.isdigit() else string for string in arr]
+    print(result)
+    return result
 
 
 def sort_array(arr: list):
